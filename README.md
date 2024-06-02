@@ -6,5 +6,5 @@
 
 - Language: Java 17
 - Framework: Spring Boot 2.7.*
-- Build Tool: Gradle
+- Build Tool: Gradle 7.3
 - Database: PostgreSQL
