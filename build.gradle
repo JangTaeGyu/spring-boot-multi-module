@@ -5,12 +5,12 @@ plugins {
 }
 
 java {
-	sourceCompatibility = '17'
+	sourceCompatibility = "${javaVersion}"
 }
 
 allprojects {
-	group = 'com.example.multimodule'
-	version = '0.0.1-SNAPSHOT'
+	group = "${projectGroup}"
+	version = "${applicationVersion}"
 
 	repositories {
 		mavenCentral()
