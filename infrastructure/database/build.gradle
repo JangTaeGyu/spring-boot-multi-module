@@ -1,0 +1,30 @@
+
+dependencies {
+    compileOnly(project(':core:core-domain'))
+
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+
+    implementation "com.querydsl:querydsl-jpa"
+    implementation "com.querydsl:querydsl-core"
+    implementation "com.querydsl:querydsl-collections"
+    annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jpa"
+
+    // javax.annotation.Generated 대응 코드 - java.lang.NoClassDefFoundError
+    annotationProcessor "jakarta.annotation:jakarta.annotation-api"
+
+    // javax.annotation.Entity 대응 코드 - java.lang.NoClassDefFoundError
+    annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+
+    runtimeOnly('org.postgresql:postgresql')
+    runtimeOnly('com.h2database:h2')
+}
+
+def querydslDir = "$buildDir/generated/querydsl"
+
+sourceSets {
+    main.java.srcDirs += [ querydslDir ]
+}
+
+clean {
+    delete file(querydslDir)
+}
