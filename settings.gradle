@@ -9,3 +9,4 @@ rootProject.name = 'multi-module'
 
 include(':core:core-api')
 include(':core:core-domain')
+include(':infrastructure:database')
