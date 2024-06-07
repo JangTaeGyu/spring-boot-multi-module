@@ -4,4 +4,5 @@ import java.util.List;
 
 public interface CategoryRepository {
     List<Category> findAllSorted();
+    Long create(Category category);
 }

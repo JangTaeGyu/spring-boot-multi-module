@@ -36,4 +36,8 @@ public class Category {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
+
+    public static Category toDomain(String name, String description, boolean show) {
+        return new Category(null, name, description, show, null, null, null);
+    }
 }
