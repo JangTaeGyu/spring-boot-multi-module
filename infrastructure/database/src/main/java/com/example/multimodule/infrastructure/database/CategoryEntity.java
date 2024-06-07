@@ -1,5 +1,6 @@
 package com.example.multimodule.infrastructure.database;
 
+import com.example.multimodule.core.domain.domain.category.Category;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,4 +27,10 @@ public class CategoryEntity extends BaseEntity {
 
     @Setter
     private Integer sort;
+
+    public CategoryEntity(Category category) {
+        this.name = category.getName();
+        this.description = category.getDescription();
+        this.show = category.isShow();
+    }
 }

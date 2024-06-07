@@ -34,4 +34,17 @@ public class CategoryRepositoryImpl implements CategoryRepository {
                 .orderBy(categoryEntity.sort.asc())
                 .fetch();
     }
+
+    private Integer maxSort() {
+        Integer maxSort = categoryRepository.getMaxSort();
+        return maxSort == null ? 0 : maxSort;
+    }
+
+    @Transactional
+    @Override
+    public Long create(Category category) {
+        CategoryEntity entity = new CategoryEntity(category);
+        entity.setSort(maxSort() + 1);
+        return categoryRepository.save(entity).getId();
+    }
 }
