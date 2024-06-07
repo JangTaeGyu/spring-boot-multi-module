@@ -2,6 +2,7 @@ package com.example.multimodule.infrastructure.database;
 
 import com.example.multimodule.core.domain.domain.category.Category;
 import com.example.multimodule.core.domain.domain.category.CategoryRepository;
+import com.example.multimodule.infrastructure.database.entity.CategoryEntity;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static com.example.multimodule.infrastructure.database.QCategoryEntity.categoryEntity;
+import static com.example.multimodule.infrastructure.database.entity.QCategoryEntity.categoryEntity;
 
 @Repository
 @Transactional(readOnly = true)

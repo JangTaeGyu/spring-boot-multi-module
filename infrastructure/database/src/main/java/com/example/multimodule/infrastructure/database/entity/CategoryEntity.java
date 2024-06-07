@@ -1,4 +1,4 @@
-package com.example.multimodule.infrastructure.database;
+package com.example.multimodule.infrastructure.database.entity;
 
 import com.example.multimodule.core.domain.domain.category.Category;
 import lombok.AccessLevel;

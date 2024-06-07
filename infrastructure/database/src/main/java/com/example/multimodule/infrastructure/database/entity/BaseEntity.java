@@ -1,4 +1,4 @@
-package com.example.multimodule.infrastructure.database;
+package com.example.multimodule.infrastructure.database.entity;
 
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
