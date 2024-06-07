@@ -10,6 +10,7 @@ import java.util.List;
 public class CategoryService {
     private final CategoryFinder categoryFinder;
     private final CategoryCreator categoryCreator;
+    private final CategoryUpdater categoryUpdater;
 
     public List<Category> getSortedCategories() {
         return categoryFinder.getSortedCategories();
@@ -17,5 +18,9 @@ public class CategoryService {
 
     public Long createCategory(CategoryData data) {
         return categoryCreator.createCategory(data);
+    }
+
+    public void updateCategory(Long categoryId, CategoryData data) {
+        categoryUpdater.updateCategory(categoryId, data);
     }
 }
