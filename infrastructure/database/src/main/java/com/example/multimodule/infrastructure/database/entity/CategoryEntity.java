@@ -33,4 +33,9 @@ public class CategoryEntity extends BaseEntity {
         this.description = category.getDescription();
         this.show = category.isShow();
     }
+
+    public void update(Category category) {
+        this.name = category.getName();
+        this.description = category.getDescription();
+    }
 }

@@ -48,4 +48,12 @@ public class CategoryRepositoryImpl implements CategoryRepository {
         entity.setSort(maxSort() + 1);
         return categoryRepository.save(entity).getId();
     }
+
+    @Transactional
+    @Override
+    public void updateById(Long id, Category category) {
+        categoryRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Category not found"))
+                .update(category);
+    }
 }
