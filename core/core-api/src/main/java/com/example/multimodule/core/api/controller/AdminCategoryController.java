@@ -32,4 +32,22 @@ public class AdminCategoryController {
         CreatedResponse response = new CreatedResponse(categoryId);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
+
+    @PutMapping("/{categoryId}")
+    public ResponseEntity<Void> update(@PathVariable Long categoryId, @RequestBody @Valid CategoryInputRequest request) {
+        categoryService.updateCategory(categoryId, request.toData());
+        return ResponseEntity.ok(null);
+    }
+
+    @PutMapping("/{categoryId}/enable")
+    public ResponseEntity<Void> enable(@PathVariable Long categoryId) {
+        categoryService.changeCategoryShow(categoryId, true);
+        return ResponseEntity.ok(null);
+    }
+
+    @PutMapping("/{categoryId}/disable")
+    public ResponseEntity<Void> disable(@PathVariable Long categoryId) {
+        categoryService.changeCategoryShow(categoryId, false);
+        return ResponseEntity.ok(null);
+    }
 }
