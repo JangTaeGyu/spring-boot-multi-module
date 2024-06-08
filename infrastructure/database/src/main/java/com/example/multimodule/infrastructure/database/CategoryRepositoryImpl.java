@@ -62,7 +62,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     @Override
     public void setShow(Long id, boolean show) {
         categoryRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(CategoryEntity.class.getName(), "id", id))
+                .orElseThrow(() -> new NotFoundException("Category", "id", id))
                 .setShow(show);
     }
 
