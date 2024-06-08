@@ -65,4 +65,28 @@ public class CategoryRepositoryImpl implements CategoryRepository {
                 .orElseThrow(() -> new NotFoundException(CategoryEntity.class.getName(), "id", id))
                 .setShow(show);
     }
+
+    @Override
+    public Long getCountByIds(List<Long> ids) {
+        return query.select(categoryEntity.count())
+                .from(categoryEntity)
+                .where(
+                        categoryEntity.id.in(ids)
+                )
+                .fetchOne();
+    }
+
+    @Transactional
+    @Override
+    public void updateCategorySort(List<Long> ids) {
+        int sort = 1;
+        for (Long categoryId : ids) {
+            query.update(categoryEntity)
+                    .set(categoryEntity.sort, sort)
+                    .where(
+                            categoryEntity.id.eq(categoryId)
+                    )
+                    .execute();
+        };
+    }
 }
