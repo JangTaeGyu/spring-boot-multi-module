@@ -1,6 +1,7 @@
 package com.example.multimodule.core.api.controller;
 
 import com.example.multimodule.core.api.controller.request.CategoryInputRequest;
+import com.example.multimodule.core.api.controller.request.CategorySortRequest;
 import com.example.multimodule.core.api.controller.response.CreatedResponse;
 import com.example.multimodule.core.api.controller.response.SuccessfulResponse;
 import com.example.multimodule.core.domain.domain.category.Category;
@@ -48,6 +49,12 @@ public class AdminCategoryController {
     @PutMapping("/{categoryId}/disable")
     public ResponseEntity<Void> disable(@PathVariable Long categoryId) {
         categoryService.changeCategoryShow(categoryId, false);
+        return ResponseEntity.ok(null);
+    }
+
+    @PutMapping("/sort")
+    public ResponseEntity<Void> sort(@RequestBody @Valid CategorySortRequest request) {
+        categoryService.reorderCategories(request.toData());
         return ResponseEntity.ok(null);
     }
 }

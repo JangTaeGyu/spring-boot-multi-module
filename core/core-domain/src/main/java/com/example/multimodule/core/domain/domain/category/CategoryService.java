@@ -27,4 +27,8 @@ public class CategoryService {
     public void changeCategoryShow(Long categoryId, boolean show) {
         categoryUpdater.changeCategoryShow(categoryId, show);
     }
+
+    public void reorderCategories(CategorySortData data) {
+        categoryUpdater.reorderCategories(data);
+    }
 }
