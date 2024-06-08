@@ -2,6 +2,7 @@ package com.example.multimodule.infrastructure.database;
 
 import com.example.multimodule.core.domain.domain.category.Category;
 import com.example.multimodule.core.domain.domain.category.CategoryRepository;
+import com.example.multimodule.core.domain.support.error.NotFoundException;
 import com.example.multimodule.infrastructure.database.entity.CategoryEntity;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -53,7 +54,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     @Override
     public void updateById(Long id, Category category) {
         categoryRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Category not found"))
+                .orElseThrow(() -> new NotFoundException(CategoryEntity.class.getName(), "id", id))
                 .update(category);
     }
 
@@ -61,7 +62,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     @Override
     public void setShow(Long id, boolean show) {
         categoryRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Category not found"))
+                .orElseThrow(() -> new NotFoundException(CategoryEntity.class.getName(), "id", id))
                 .setShow(show);
     }
 }
