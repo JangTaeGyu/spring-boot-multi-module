@@ -6,15 +6,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "categories")
-@Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Entity @Table(name = "categories")
+@Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@DynamicUpdate
 public class CategoryEntity extends BaseEntity {
     @Column(nullable = false, length = 100)
     private String name;
