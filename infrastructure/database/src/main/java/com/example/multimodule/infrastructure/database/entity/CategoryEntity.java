@@ -22,6 +22,7 @@ public class CategoryEntity extends BaseEntity {
     @Column(columnDefinition="TEXT")
     private String description;
 
+    @Setter
     @ColumnDefault("'true'")
     private boolean show;
 

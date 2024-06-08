@@ -8,4 +8,6 @@ public interface CategoryRepository {
     Long create(Category category);
 
     void updateById(Long id, Category category);
+
+    void setShow(Long id, boolean show);
 }

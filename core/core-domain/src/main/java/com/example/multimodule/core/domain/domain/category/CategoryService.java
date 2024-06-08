@@ -23,4 +23,8 @@ public class CategoryService {
     public void updateCategory(Long categoryId, CategoryData data) {
         categoryUpdater.updateCategory(categoryId, data);
     }
+
+    public void changeCategoryShow(Long categoryId, boolean show) {
+        categoryUpdater.changeCategoryShow(categoryId, show);
+    }
 }
