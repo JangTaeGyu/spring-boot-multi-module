@@ -56,4 +56,12 @@ public class CategoryRepositoryImpl implements CategoryRepository {
                 .orElseThrow(() -> new IllegalArgumentException("Category not found"))
                 .update(category);
     }
+
+    @Transactional
+    @Override
+    public void setShow(Long id, boolean show) {
+        categoryRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Category not found"))
+                .setShow(show);
+    }
 }
