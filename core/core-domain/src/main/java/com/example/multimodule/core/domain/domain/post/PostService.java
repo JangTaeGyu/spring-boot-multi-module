@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class PostService {
     private final PostCreator postCreator;
 
-    public Long createPost(PostData data) {
+    public Long createPost(PostData data, PostTagData tagData) {
         return postCreator.createPost(data);
     }
 }

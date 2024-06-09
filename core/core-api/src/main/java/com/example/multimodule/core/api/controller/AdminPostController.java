@@ -21,7 +21,7 @@ public class AdminPostController {
 
     @PostMapping
     public ResponseEntity<CreatedResponse> create(@RequestBody @Valid PostInputRequest request) {
-        Long postId = postService.createPost(request.toData());
+        Long postId = postService.createPost(request.toData(), request.toTagData());
         CreatedResponse response = new CreatedResponse(postId);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
