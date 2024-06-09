@@ -12,9 +12,9 @@ import javax.persistence.Table;
 @Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PostTagEntity {
     @EmbeddedId
-    private PostTagKey id;
+    private PostTagEntityKey id;
 
-    public PostTagEntity(PostTagKey id) {
+    public PostTagEntity(PostTagEntityKey id) {
         this.id = id;
     }
 }

@@ -12,14 +12,14 @@ import java.io.Serializable;
 @Embeddable
 @EqualsAndHashCode(of = {"postId", "tagId"})
 @Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PostTagKey implements Serializable {
+public class PostTagEntityKey implements Serializable {
     @Column(name = "post_id")
     private Long postId;
 
     @Column(name = "tag_id")
     private Long tagId;
 
-    public PostTagKey(Long postId, Long tagId) {
+    public PostTagEntityKey(Long postId, Long tagId) {
         this.postId = postId;
         this.tagId = tagId;
     }
