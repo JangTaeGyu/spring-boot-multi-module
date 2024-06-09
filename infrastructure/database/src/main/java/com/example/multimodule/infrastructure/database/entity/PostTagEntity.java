@@ -10,11 +10,11 @@ import javax.persistence.Table;
 
 @Entity @Table(name = "post_tags")
 @Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PostTag {
+public class PostTagEntity {
     @EmbeddedId
     private PostTagKey id;
 
-    public PostTag(PostTagKey id) {
+    public PostTagEntity(PostTagKey id) {
         this.id = id;
     }
 }
