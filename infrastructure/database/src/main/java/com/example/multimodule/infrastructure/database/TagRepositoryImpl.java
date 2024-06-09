@@ -15,6 +15,7 @@ import java.util.Optional;
 public class TagRepositoryImpl implements TagRepository {
     private final JpaTagRepository tagRepository;
 
+    @Transactional
     @Override
     public Long create(String name) {
         TagEntity entity = new TagEntity(name);
