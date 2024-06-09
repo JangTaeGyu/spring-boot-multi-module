@@ -9,6 +9,8 @@ public class PostService {
     private final PostCreator postCreator;
 
     public Long createPost(PostData data, PostTagData tagData) {
-        return postCreator.createPost(data);
+        Long createdPostId = postCreator.createPost(data);
+
+        return createdPostId;
     }
 }
