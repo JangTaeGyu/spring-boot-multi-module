@@ -7,6 +7,8 @@ public interface CategoryRepository {
 
     Long create(Category category);
 
+    boolean existsById(Long categoryId);
+
     void updateById(Long id, Category category);
 
     void setShow(Long id, boolean show);

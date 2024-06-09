@@ -12,5 +12,7 @@ public interface JpaCategoryRepository extends Repository<CategoryEntity, Long> 
 
     CategoryEntity save(CategoryEntity entity);
 
+    boolean existsById(Long id);
+
     Optional<CategoryEntity> findById(Long id);
 }

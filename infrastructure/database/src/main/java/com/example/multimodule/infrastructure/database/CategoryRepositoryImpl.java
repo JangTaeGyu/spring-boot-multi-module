@@ -50,6 +50,11 @@ public class CategoryRepositoryImpl implements CategoryRepository {
         return categoryRepository.save(entity).getId();
     }
 
+    @Override
+    public boolean existsById(Long categoryId) {
+        return categoryRepository.existsById(categoryId);
+    }
+
     @Transactional
     @Override
     public void updateById(Long id, Category category) {
