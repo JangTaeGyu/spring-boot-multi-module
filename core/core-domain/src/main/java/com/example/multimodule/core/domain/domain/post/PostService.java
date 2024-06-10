@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class PostService {
+    private final PostFinder postFinder;
     private final PostCreator postCreator;
 
     private final PostTagManager postTagManager;
@@ -19,5 +20,9 @@ public class PostService {
             postTagManager.attachTagsToPost(createdPostId, tagData);
             return createdPostId;
         });
+    }
+
+    public Post getPost(Long postId) {
+        return postFinder.getPost(postId);
     }
 }
