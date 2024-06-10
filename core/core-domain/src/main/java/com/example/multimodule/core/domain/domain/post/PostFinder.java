@@ -13,9 +13,12 @@ public class PostFinder {
     private final PostTagRepository postTagRepository;
 
     public Post getPost(Long postId) {
-        Post post = postRepository.findById(postId).orElseThrow(() -> new NotFoundException("Post", "id", postId));
-        List<PostTag> tags = postTagRepository.findAllByPostIds(List.of(postId));
-        post.setTags(tags);
-        return post;
+        return postRepository.findById(postId)
+                .map(post -> {
+                    List<PostTag> tags = postTagRepository.findAllByPostIds(List.of(postId));
+                    post.setTags(tags);
+                    return post;
+                })
+                .orElseThrow(() -> new NotFoundException("Post", "id", postId));
     }
 }
