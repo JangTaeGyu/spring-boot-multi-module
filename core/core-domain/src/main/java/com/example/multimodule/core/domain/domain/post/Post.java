@@ -2,8 +2,10 @@ package com.example.multimodule.core.domain.domain.post;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 public class Post {
@@ -18,6 +20,9 @@ public class Post {
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private final LocalDateTime updatedAt;
+
+    @Setter
+    private List<PostTag> tags;
 
     @Getter
     public static class PostCategory {
