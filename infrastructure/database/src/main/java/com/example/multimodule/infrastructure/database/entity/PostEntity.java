@@ -36,4 +36,10 @@ public class PostEntity extends BaseEntity {
         this.body = post.getBody();
         this.show = post.isShow();
     }
+
+    public void update(Post post) {
+        this.categoryId = post.getCategory().getId();
+        this.title = post.getTitle();
+        this.body = post.getBody();
+    }
 }

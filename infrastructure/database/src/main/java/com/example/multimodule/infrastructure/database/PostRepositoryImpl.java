@@ -2,6 +2,7 @@ package com.example.multimodule.infrastructure.database;
 
 import com.example.multimodule.core.domain.domain.post.Post;
 import com.example.multimodule.core.domain.domain.post.PostRepository;
+import com.example.multimodule.core.domain.support.error.NotFoundException;
 import com.example.multimodule.infrastructure.database.entity.PostEntity;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
@@ -54,5 +55,13 @@ public class PostRepositoryImpl implements PostRepository {
                         )
                         .fetchFirst()
         );
+    }
+
+    @Transactional
+    @Override
+    public void updateById(Long id, Post post) {
+        postRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Post", "id", id))
+                .update(post);
     }
 }
