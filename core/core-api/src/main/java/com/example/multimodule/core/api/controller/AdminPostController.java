@@ -31,4 +31,10 @@ public class AdminPostController {
         SuccessfulResponse<Post> response = new SuccessfulResponse<>(post);
         return ResponseEntity.ok(response);
     }
+
+    @PutMapping("/{postId}")
+    public ResponseEntity<Void> update(@PathVariable Long postId, @RequestBody @Valid PostInputRequest request) {
+        postService.updatePost(postId, request.toData(), request.toTagData());
+        return ResponseEntity.ok(null);
+    }
 }

@@ -27,7 +27,7 @@ public class PostService {
         return postFinder.getPost(postId);
     }
 
-    public void updatePost(Long postId, PostData data) {
+    public void updatePost(Long postId, PostData data, PostTagData tagData) {
         postUpdater.updatePost(postId, data);
     }
 }
