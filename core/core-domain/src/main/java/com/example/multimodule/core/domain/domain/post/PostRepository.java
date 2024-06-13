@@ -6,4 +6,6 @@ public interface PostRepository {
     Long create(Post post);
 
     Optional<Post> findById(Long postId);
+
+    void updateById(Long id, Post post);
 }

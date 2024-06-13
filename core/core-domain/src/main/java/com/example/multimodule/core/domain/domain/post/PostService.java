@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class PostService {
     private final PostFinder postFinder;
     private final PostCreator postCreator;
+    private final PostUpdater postUpdater;
 
     private final PostTagManager postTagManager;
 
@@ -24,5 +25,9 @@ public class PostService {
 
     public Post getPost(Long postId) {
         return postFinder.getPost(postId);
+    }
+
+    public void updatePost(Long postId, PostData data) {
+        postUpdater.updatePost(postId, data);
     }
 }
