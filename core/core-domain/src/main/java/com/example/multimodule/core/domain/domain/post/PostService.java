@@ -28,6 +28,10 @@ public class PostService {
     }
 
     public void updatePost(Long postId, PostData data, PostTagData tagData) {
-        postUpdater.updatePost(postId, data);
+        transactionHandler.execute(() -> {
+            postUpdater.updatePost(postId, data);
+            postTagManager.syncTagsToPost(postId, tagData);
+            return null;
+        });
     }
 }
