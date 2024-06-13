@@ -16,4 +16,13 @@ public class PostTagManager {
             postTagRepository.create(postId, createdTagId);
         });
     }
+
+    public void detachTagsToPost(Long postId) {
+        postTagRepository.deleteByPostId(postId);
+    }
+
+    public void syncTagsToPost(Long postId, PostTagData tagData) {
+        detachTagsToPost(postId);
+        attachTagsToPost(postId, tagData);
+    }
 }

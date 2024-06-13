@@ -44,4 +44,12 @@ public class PostTagRepositoryImpl implements PostTagRepository {
                 )
                 .fetch();
     }
+
+    @Transactional
+    @Override
+    public void deleteByPostId(Long postId) {
+        query.delete(postTagEntity)
+                .where(postTagEntity.id.postId.eq(postId))
+                .execute();
+    }
 }
