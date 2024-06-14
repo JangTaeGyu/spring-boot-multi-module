@@ -4,6 +4,7 @@ import com.example.multimodule.core.domain.domain.post.Post;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -25,6 +26,7 @@ public class PostEntity extends BaseEntity {
     @Column(columnDefinition="TEXT")
     private String body;
 
+    @Setter
     @ColumnDefault("'false'")
     private boolean show;
 
