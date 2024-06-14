@@ -34,4 +34,8 @@ public class PostService {
             return null;
         });
     }
+
+    public void changePostShow(Long postId, boolean show) {
+        postUpdater.changePostShow(postId, show);
+    }
 }

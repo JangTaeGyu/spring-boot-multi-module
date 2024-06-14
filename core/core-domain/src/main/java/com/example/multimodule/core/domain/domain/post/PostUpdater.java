@@ -13,4 +13,8 @@ public class PostUpdater {
         postValidation.validate(data);
         postRepository.updateById(postId, data.toDomain());
     }
+
+    public void changePostShow(Long postId, boolean show) {
+        postRepository.setShow(postId, show);
+    }
 }

@@ -8,4 +8,6 @@ public interface PostRepository {
     Optional<Post> findById(Long postId);
 
     void updateById(Long id, Post post);
+
+    void setShow(Long id, boolean show);
 }
