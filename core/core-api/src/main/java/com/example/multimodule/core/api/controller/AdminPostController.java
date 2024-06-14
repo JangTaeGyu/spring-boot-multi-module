@@ -37,4 +37,16 @@ public class AdminPostController {
         postService.updatePost(postId, request.toData(), request.toTagData());
         return ResponseEntity.ok(null);
     }
+
+    @PutMapping("/{postId}/enable")
+    public ResponseEntity<Void> enable(@PathVariable Long postId) {
+        postService.changePostShow(postId, true);
+        return ResponseEntity.ok(null);
+    }
+
+    @PutMapping("/{postId}/disable")
+    public ResponseEntity<Void> disable(@PathVariable Long postId) {
+        postService.changePostShow(postId, false);
+        return ResponseEntity.ok(null);
+    }
 }
