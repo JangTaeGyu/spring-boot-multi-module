@@ -72,4 +72,12 @@ public class PostRepositoryImpl implements PostRepository {
                 .orElseThrow(() -> new NotFoundException("Post", "id", id))
                 .setShow(show);
     }
+
+    @Transactional
+    @Override
+    public void deleteById(Long id) {
+        postRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Post", "id", id))
+                .delete();
+    }
 }

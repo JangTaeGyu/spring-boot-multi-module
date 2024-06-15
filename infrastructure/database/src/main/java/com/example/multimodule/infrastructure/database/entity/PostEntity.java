@@ -44,4 +44,8 @@ public class PostEntity extends BaseEntity {
         this.title = post.getTitle();
         this.body = post.getBody();
     }
+
+    public void delete() {
+        this.deletedAt = LocalDateTime.now();
+    }
 }
