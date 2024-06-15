@@ -10,6 +10,7 @@ public class PostService {
     private final PostFinder postFinder;
     private final PostCreator postCreator;
     private final PostUpdater postUpdater;
+    private final PostDeleter postDeleter;
 
     private final PostTagManager postTagManager;
 
@@ -37,5 +38,13 @@ public class PostService {
 
     public void changePostShow(Long postId, boolean show) {
         postUpdater.changePostShow(postId, show);
+    }
+
+    public void deletePost(Long postId) {
+        transactionHandler.execute(() -> {
+            postTagManager.detachTagsToPost(postId);
+            postDeleter.deletePost(postId);
+            return null;
+        });
     }
 }

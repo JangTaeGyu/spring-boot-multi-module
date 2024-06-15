@@ -10,4 +10,6 @@ public interface PostRepository {
     void updateById(Long id, Post post);
 
     void setShow(Long id, boolean show);
+
+    void deleteById(Long id);
 }
