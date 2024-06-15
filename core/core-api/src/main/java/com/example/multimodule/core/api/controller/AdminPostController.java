@@ -49,4 +49,10 @@ public class AdminPostController {
         postService.changePostShow(postId, false);
         return ResponseEntity.ok(null);
     }
+
+    @DeleteMapping("/{postId}")
+    public ResponseEntity<Void> delete(@PathVariable Long postId) {
+        postService.deletePost(postId);
+        return ResponseEntity.noContent().build();
+    }
 }
