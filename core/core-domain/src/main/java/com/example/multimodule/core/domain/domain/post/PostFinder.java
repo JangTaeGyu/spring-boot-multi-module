@@ -14,15 +14,28 @@ public class PostFinder {
     private final PostRepository postRepository;
     private final PostTagRepository postTagRepository;
 
+    private void mergeTagsToPost(List<Post> posts) {
+        if (posts.isEmpty()) return;
+
+        List<Long> postIds = posts.stream().map(Post::getId).toList();
+        List<PostTag> tags = postTagRepository.findAllByPostIds(postIds);
+
+        posts.forEach(post -> {
+            List<PostTag> filteredTags = tags.stream().filter(tag -> tag.getPostId().equals(post.getId())).toList();
+            post.setTags(filteredTags);
+        });
+    }
+
     public Page<Post> searchPostsBy(PostSearchData searchData, Pageable pageable) {
-        return postRepository.searchBy(searchData, pageable);
+        Page<Post> posts = postRepository.searchBy(searchData, pageable);
+        mergeTagsToPost(posts.getContent());
+        return posts;
     }
 
     public Post getPost(Long postId) {
         return postRepository.findById(postId)
                 .map(post -> {
-                    List<PostTag> tags = postTagRepository.findAllByPostIds(List.of(postId));
-                    post.setTags(tags);
+                    mergeTagsToPost(List.of(post));
                     return post;
                 })
                 .orElseThrow(() -> new NotFoundException("Post", "id", postId));
