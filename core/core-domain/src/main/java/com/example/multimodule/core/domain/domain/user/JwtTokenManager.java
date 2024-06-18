@@ -1,6 +1,5 @@
 package com.example.multimodule.core.domain.domain.user;
 
-import com.example.multimodule.core.domain.support.error.HttpException;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -58,17 +57,17 @@ public class JwtTokenManager {
 
             return true;
         } catch (SignatureException e) {
-            throw new HttpException("Invalid Jwt Signature");
+            throw new JwtTokenException("Invalid Jwt Signature");
         } catch (MalformedJwtException e) {
-            throw new HttpException("Invalid Jwt Token");
+            throw new JwtTokenException("Invalid Jwt Token");
         } catch (ExpiredJwtException e) {
-            throw new HttpException("Expired Jwt Token");
+            throw new JwtTokenException("Expired Jwt Token");
         } catch (UnsupportedJwtException e) {
-            throw new HttpException("Unsupported Jwt Token");
+            throw new JwtTokenException("Unsupported Jwt Token");
         } catch (IllegalArgumentException e) {
-            throw new HttpException("Jwt claims String Is Empty");
+            throw new JwtTokenException("Jwt claims String Is Empty");
         } catch (IncorrectClaimException e) {
-            throw new HttpException("Invalid Jwt Claim");
+            throw new JwtTokenException("Invalid Jwt Claim");
         }
     }
 
