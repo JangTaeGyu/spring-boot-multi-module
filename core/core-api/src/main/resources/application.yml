@@ -8,3 +8,6 @@ spring:
   config:
     import: database.yml
 
+app:
+  jwt-secret: WpXy1gmIqxKjjo9Vs3a5taNyIvfoJV5yP8EREAt6bZRZNUn8s1OA1UaogWUZpSaI
+  jwt-expiration-date: 604800000
