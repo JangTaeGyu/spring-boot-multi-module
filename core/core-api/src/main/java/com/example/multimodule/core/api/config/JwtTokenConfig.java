@@ -1,6 +1,7 @@
 package com.example.multimodule.core.api.config;
 
 import com.example.multimodule.core.domain.domain.user.JwtTokenManager;
+import com.example.multimodule.core.domain.domain.user.JwtTokenManagerImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,6 @@ public class JwtTokenConfig {
 
     @Bean
     public JwtTokenManager jwtTokenManager() {
-        return new JwtTokenManager(secret, expirationDate);
+        return new JwtTokenManagerImpl(secret, expirationDate);
     }
 }

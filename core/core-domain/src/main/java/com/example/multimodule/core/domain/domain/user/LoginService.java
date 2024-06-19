@@ -18,7 +18,7 @@ public class LoginService {
 
     private AccessToken makeAccessTokenDto(Authentication authenticate) {
         CustomUserDetails userDetails = (CustomUserDetails) authenticate.getPrincipal();
-        String token = jwtTokenManager.create(userDetails.getUsername());
+        String token = jwtTokenManager.makeToken(userDetails.getUsername());
 
         return new AccessToken(token, jwtTokenManager.expireTime(null));
     }
