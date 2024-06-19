@@ -15,9 +15,9 @@ storage:
   datasource:
     core:
       driver-class-name: org.postgresql.Driver
-      jdbc-url: jdbc:postgresql://localhost:55000/simple_blog?useSSL=false&serverTimezone=Asia/Seoul
-      username: admin
-      password: cosmos
-      pool-name: core-db-pool
+      jdbc-url:
+      username:
+      password:
+      pool-name:
       data-source-properties:
         rewriteBatchedStatements: true
