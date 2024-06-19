@@ -20,6 +20,7 @@ public class UserRepositoryImpl implements UserRepository {
         return userRepository.existsByEmail(email);
     }
 
+    @Transactional
     @Override
     public Long create(User user) {
         UserEntity entity = new UserEntity(user);
