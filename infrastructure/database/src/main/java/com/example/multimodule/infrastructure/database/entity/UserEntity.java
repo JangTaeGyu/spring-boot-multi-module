@@ -34,4 +34,8 @@ public class UserEntity extends BaseEntity {
         this.name = user.getName();
         this.role = user.getRole();
     }
+
+    public User toDomain() {
+        return new User(this.id, this.email, this.password, this.name, this.role, this.latestAccessedAt);
+    }
 }
