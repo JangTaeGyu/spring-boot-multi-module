@@ -38,6 +38,7 @@ public class UserRepositoryImpl implements UserRepository {
         return userRepository.save(entity).getId();
     }
 
+    @Transactional
     @Override
     public void updateLatestAccessedAtByEmail(String email, LocalDateTime latestAccessedAt) {
         query.update(userEntity)
