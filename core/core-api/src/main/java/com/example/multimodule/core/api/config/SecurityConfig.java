@@ -1,5 +1,9 @@
 package com.example.multimodule.core.api.config;
 
+import com.example.multimodule.core.api.handler.CustomAccessDeniedHandler;
+import com.example.multimodule.core.api.handler.JwtTokenAuthenticationEntryPoint;
+import com.example.multimodule.core.domain.domain.user.UserRole;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,7 +17,10 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
+    private final JwtTokenAuthenticationEntryPoint jwtTokenAuthenticationEntryPoint;
+    private final CustomAccessDeniedHandler customAccessDeniedHandler;
 
     @Bean
     protected PasswordEncoder passwordEncoder() {
@@ -26,9 +33,14 @@ public class SecurityConfig {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+                .exceptionHandling()
+                    .authenticationEntryPoint(jwtTokenAuthenticationEntryPoint)
+                    .accessDeniedHandler(customAccessDeniedHandler)
+                .and()
                 .authorizeRequests(auth -> auth
                         .antMatchers("/health").permitAll()
                         .antMatchers("/api/login").permitAll()
+                        .antMatchers("/api/admin/**").hasAuthority(UserRole.ADMIN.name()) // ADMIN 권한만 접근 가능
                         .anyRequest().authenticated()
                 );
 
