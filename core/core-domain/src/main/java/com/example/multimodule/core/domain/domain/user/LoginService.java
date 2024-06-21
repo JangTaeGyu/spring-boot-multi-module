@@ -28,7 +28,6 @@ public class LoginService {
             UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword());
             Authentication authenticate = authenticationManager.authenticate(token);
 
-            // 로그인 시간 저장
             userRepository.updateLatestAccessedAtByEmail(request.getEmail(), LocalDateTime.now());
 
             return makeAccessTokenDto(authenticate);
