@@ -13,4 +13,6 @@ public interface UserRepository {
     void updateLatestAccessedAtByEmail(String email, LocalDateTime latestAccessedAt);
 
     void updateById(Long id, User user);
+
+    void deleteById(Long id);
 }

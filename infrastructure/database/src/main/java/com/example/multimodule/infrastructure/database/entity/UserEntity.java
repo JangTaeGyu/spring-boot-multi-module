@@ -46,4 +46,8 @@ public class UserEntity extends BaseEntity {
     public void updateName(String name) {
         this.name = name;
     }
+
+    public void delete() {
+        this.deletedAt = LocalDateTime.now();
+    }
 }

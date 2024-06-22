@@ -63,4 +63,12 @@ public class UserRepositoryImpl implements UserRepository {
 
         entity.updateName(user.getName());
     }
+
+    @Transactional
+    @Override
+    public void deleteById(Long id) {
+        userRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("User", "id", id))
+                .delete();
+    }
 }
