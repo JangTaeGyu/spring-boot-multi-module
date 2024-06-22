@@ -7,8 +7,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService {
     private final UserCreator userCreator;
+    private final UserUpdater userUpdater;
 
     public Long createUser(UserCreateData data) {
         return userCreator.createUser(data);
+    }
+
+    public void updateUser(Long userId, UserUpdateData data) {
+        userUpdater.updateUser(userId, data);
     }
 }
