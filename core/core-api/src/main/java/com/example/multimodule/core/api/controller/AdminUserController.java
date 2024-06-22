@@ -29,4 +29,10 @@ public class AdminUserController {
         userService.updateUser(userId, request.toData());
         return ResponseEntity.ok(null);
     }
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<Void> delete(@PathVariable Long userId) {
+        userService.deleteUser(userId);
+        return ResponseEntity.noContent().build();
+    }
 }
