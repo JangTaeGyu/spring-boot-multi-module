@@ -2,7 +2,6 @@ package com.example.multimodule.core.api.filter;
 
 import com.example.multimodule.core.api.controller.response.ErrorResponse;
 import com.example.multimodule.core.domain.domain.user.JwtTokenManager;
-import com.example.multimodule.core.domain.support.error.HttpException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
