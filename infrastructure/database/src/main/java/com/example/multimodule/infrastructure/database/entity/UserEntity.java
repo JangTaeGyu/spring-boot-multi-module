@@ -38,4 +38,12 @@ public class UserEntity extends BaseEntity {
     public User toDomain() {
         return new User(this.id, this.email, this.password, this.name, this.role, this.latestAccessedAt);
     }
+
+    public void updatePassword(String password) {
+        this.password = password;
+    }
+
+    public void updateName(String name) {
+        this.name = name;
+    }
 }

@@ -2,6 +2,7 @@ package com.example.multimodule.infrastructure.database;
 
 import com.example.multimodule.core.domain.domain.user.User;
 import com.example.multimodule.core.domain.domain.user.UserRepository;
+import com.example.multimodule.core.domain.support.error.NotFoundException;
 import com.example.multimodule.infrastructure.database.entity.UserEntity;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -48,5 +49,18 @@ public class UserRepositoryImpl implements UserRepository {
                         userEntity.deletedAt.isNull()
                 )
                 .execute();
+    }
+
+    @Transactional
+    @Override
+    public void updateById(Long id, User user) {
+        UserEntity entity = userRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("User", "id", id));
+
+        if (user.getPassword() != null) {
+            entity.updatePassword(user.getPassword());
+        }
+
+        entity.updateName(user.getName());
     }
 }

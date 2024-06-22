@@ -9,6 +9,9 @@ import java.util.Optional;
 public interface JpaUserRepository extends Repository<UserEntity, Long> {
     boolean existsByEmail(String email);
 
+    @Query(value = "SELECT u FROM UserEntity u WHERE u.id = :id AND u.deletedAt IS NULL")
+    Optional<UserEntity> findById(Long id);
+
     @Query(value = "SELECT u FROM UserEntity u WHERE u.email = :email AND u.deletedAt IS NULL")
     Optional<UserEntity> findByEmail(String email);
 

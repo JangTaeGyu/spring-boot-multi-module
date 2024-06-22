@@ -11,4 +11,6 @@ public interface UserRepository {
     Long create(User user);
 
     void updateLatestAccessedAtByEmail(String email, LocalDateTime latestAccessedAt);
+
+    void updateById(Long id, User user);
 }

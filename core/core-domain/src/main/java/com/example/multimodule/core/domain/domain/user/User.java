@@ -1,7 +1,9 @@
 package com.example.multimodule.core.domain.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -9,7 +11,10 @@ import java.time.LocalDateTime;
 public class User {
     private final Long id;
     private final String email;
-    private final String password;
+
+    @JsonIgnore
+    @Setter
+    private String password;
     private final String name;
     private final UserRole role;
 
