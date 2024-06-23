@@ -7,11 +7,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
 public class PostFinder {
     private final PostRepository postRepository;
+    private final PostCache postCache;
     private final PostTagRepository postTagRepository;
 
     private void mergeTagsToPost(List<Post> posts) {
@@ -33,9 +35,15 @@ public class PostFinder {
     }
 
     public Post getPost(Long postId) {
+        Optional<Post> result = postCache.getById(postId);
+        if (result.isPresent()) {
+            return result.get();
+        }
+
         return postRepository.findById(postId)
                 .map(post -> {
                     mergeTagsToPost(List.of(post));
+                    postCache.save(post);
                     return post;
                 })
                 .orElseThrow(() -> new NotFoundException("Post", "id", postId));
