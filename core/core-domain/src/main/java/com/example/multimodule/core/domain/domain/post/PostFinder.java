@@ -12,8 +12,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostFinder {
     private final PostRepository postRepository;
-    private final PostCache postCache;
     private final PostTagRepository postTagRepository;
+    private final PostCache postCache;
 
     private void mergeTagsToPost(List<Post> posts) {
         if (posts.isEmpty()) return;

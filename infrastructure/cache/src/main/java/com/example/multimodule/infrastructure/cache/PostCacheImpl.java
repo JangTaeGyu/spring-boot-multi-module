@@ -37,6 +37,6 @@ public class PostCacheImpl implements PostCache {
 
     @Override
     public void deleteById(Long id) {
-
+        template.delete(cacheKey(id));
     }
 }
